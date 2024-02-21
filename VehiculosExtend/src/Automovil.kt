@@ -11,7 +11,7 @@ class Automovil(marca: String, capacidadCombustible: Float, combustibleActual: F
 
     fun realizarDerrape()/**: Float*/ { }
 
-    override fun calcularAutonomia(): Int {
+    override fun calcularAutonomia(): Float {
         return super.calcularAutonomia()
     }
 }

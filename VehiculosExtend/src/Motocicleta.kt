@@ -8,11 +8,11 @@ class Motocicleta(marca: String, capacidadCombustible: Float, combustibleActual:
     fun realizaCaballito()/**: Float*/{ }
 
 
-    override fun calcularAutonomia(): Int {
+    override fun calcularAutonomia(): Float {
         return super.calcularAutonomia() * KM_POR_LITRO
     }
 
-    override fun realizaViaje(distancia: Int): Int {
+    override fun realizaViaje(distancia: Float): Float {
         return super.realizaViaje(distancia)
     }
 

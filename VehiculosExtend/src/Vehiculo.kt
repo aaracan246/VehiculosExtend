@@ -8,6 +8,7 @@ abstract class Vehiculo(marca: String, capacidadCombustible: Float, combustibleA
 
     companion object{
         const val KM_POR_LITRO = 10 // Un vehiculo puede avanzar 10km por cada litro.
+        const val AHORRO_ELECTRICO = 15
 
     }
     fun obtenerInfo(): String{
@@ -18,27 +19,27 @@ abstract class Vehiculo(marca: String, capacidadCombustible: Float, combustibleA
     }
 
 
-    open fun calcularAutonomia(): Int{ /** Cada litro da para 10km */
+    open fun calcularAutonomia(): Float{ /** Cada litro da para 10km */
         val autonomia = combustibleActual * KM_POR_LITRO
 
-        return autonomia.toInt()
+        return autonomia
     }
 
 
-    open fun realizaViaje(distancia: Int): Int{
+    open fun realizaViaje(distancia: Float): Float{
         val distanciaRecorrible = combustibleActual * KM_POR_LITRO
 
         val diferenciaDistancia = distancia - distanciaRecorrible
+        //Faltan funciones que saquen lo consumido
 
-
-        return diferenciaDistancia.toInt()
+        return diferenciaDistancia
     }
 
 
     fun repostar(cantidad: Float) /**Float*/{ }
 
 
-//    fun redondear(valor: Double): Float{
-//
-//    }
+    fun Float.redondear(): Float {
+        return (this * 100).toInt().toFloat() / 100    //Lo tenía casi en clase
+    }
 }
