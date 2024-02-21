@@ -1,9 +1,10 @@
-abstract class Vehiculo(marca: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Int){
+abstract class Vehiculo(nombre: String, marca: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float){
 
+    val nombre = nombre
     val marca = marca
     val capacidadCombustible = capacidadCombustible
-    val combustibleActual = combustibleActual
-    val kmActuales = kmActuales
+    var combustibleActual = combustibleActual
+    var kmActuales = kmActuales
 
 
     companion object{
@@ -22,21 +23,36 @@ abstract class Vehiculo(marca: String, capacidadCombustible: Float, combustibleA
     open fun calcularAutonomia(): Float{ /** Cada litro da para 10km */
         val autonomia = combustibleActual * KM_POR_LITRO
 
-        return autonomia
+        return autonomia.redondear()
     }
 
 
     open fun realizaViaje(distancia: Float): Float{
-        val distanciaRecorrible = combustibleActual * KM_POR_LITRO
+        val distanciaMax = calcularAutonomia()  // lo asigno así no tiene que recalcular la función calcularAutonomia
+        if (distanciaMax > distancia){
+            kmActuales += distancia
+            combustibleActual -= (distancia / KM_POR_LITRO).redondear()
+            return 0f
+        }
+        else{
 
-        val diferenciaDistancia = distancia - distanciaRecorrible
-        //Faltan funciones que saquen lo consumido
+            val combustibleGastado = distanciaMax * KM_POR_LITRO
 
-        return diferenciaDistancia
+            return distancia - distanciaMax
+        }
     }
 
+    fun repostar(cantidad: Float): Float{
+        val combustibleOriginal = combustibleActual
+        if (cantidad <= 0f || (cantidad + combustibleActual) > capacidadCombustible){
+            combustibleActual = capacidadCombustible
+            return capacidadCombustible - combustibleOriginal
+        }
+        else{
+            return capacidadCombustible - combustibleOriginal
+        }
 
-    fun repostar(cantidad: Float) /**Float*/{ }
+    }
 
 
     fun Float.redondear(): Float {
