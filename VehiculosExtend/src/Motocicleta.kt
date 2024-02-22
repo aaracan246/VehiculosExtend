@@ -2,6 +2,14 @@ class Motocicleta(nombre: String, marca: String, capacidadCombustible: Float, co
 
     val cilindrada = cilindrada
 
+    init {
+        require(cilindrada in 124..999) { "La cilindrada no puede ser menor a 125 ni mayor a 1000." }
+
+
+    }
+
+
+
     companion object{
         const val KM_POR_LITRO = 20f
         const val GASTO_CABALLITO = 6.5f
@@ -27,7 +35,7 @@ class Motocicleta(nombre: String, marca: String, capacidadCombustible: Float, co
     }
 
     override fun realizaViaje(distancia: Float): Float {
-        return super.realizaViaje(distancia)
+        return 2f
     }
 
 

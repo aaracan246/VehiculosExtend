@@ -42,7 +42,7 @@ class Automovil(nombre: String, marca: String, capacidadCombustible: Float, comb
             return super.calcularAutonomia()
         }
         else{
-            var autonomiaElectrico = combustibleActual * AHORRO_ELECTRICO
+            val autonomiaElectrico = combustibleActual * AHORRO_ELECTRICO
 
             return autonomiaElectrico.redondear()
         }
