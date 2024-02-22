@@ -1,17 +1,31 @@
-abstract class Vehiculo(nombre: String, marca: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float){
+abstract class Vehiculo(nombre: String, marca: String, modelo: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float){
 
-    val nombre = nombre
+    val nombre: String = requerirNombreUnico(nombre)
+
+
     val marca = marca
     val capacidadCombustible = capacidadCombustible
     var combustibleActual = combustibleActual
     var kmActuales = kmActuales
 
+    init {
 
+    }
     companion object{
         const val KM_POR_LITRO = 10 // Un vehiculo puede avanzar 10km por cada litro.
         const val AHORRO_ELECTRICO = 15
 
+
+        var listaNombres = mutableSetOf<String>()
+
+        fun requerirNombreUnico(nombre: String): String{
+            require(!listaNombres.contains(nombre)) { "'$nombre' ya existe como competidor." }
+            listaNombres.add(nombre)
+
+            return nombre
+        }
     }
+
     fun obtenerInfo(): String{
         val kmRestantes = combustibleActual * KM_POR_LITRO
 
@@ -36,7 +50,8 @@ abstract class Vehiculo(nombre: String, marca: String, capacidadCombustible: Flo
         }
         else{
 
-            val combustibleGastado = distanciaMax * KM_POR_LITRO
+            combustibleActual = 0f
+            kmActuales += calcularAutonomia()
 
             return distancia - distanciaMax
         }

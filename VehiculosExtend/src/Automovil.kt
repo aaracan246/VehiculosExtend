@@ -1,4 +1,4 @@
-class Automovil(nombre: String, marca: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float, esHibrido: Boolean): Vehiculo(nombre, marca, capacidadCombustible, combustibleActual, kmActuales){
+class Automovil(nombre: String, marca: String, modelo: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float, esHibrido: Boolean): Vehiculo(nombre, marca, modelo, capacidadCombustible, combustibleActual, kmActuales){
 
     val esHibrido = esHibrido
 

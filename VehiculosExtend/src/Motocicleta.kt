@@ -1,4 +1,4 @@
-class Motocicleta(nombre: String, marca: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float, cilindrada: Int): Vehiculo(nombre,marca, capacidadCombustible, combustibleActual, kmActuales) {
+class Motocicleta(nombre: String, marca: String, modelo: String, capacidadCombustible: Float, combustibleActual: Float, kmActuales: Float, cilindrada: Int): Vehiculo(nombre,marca, modelo, capacidadCombustible, combustibleActual, kmActuales) {
 
     val cilindrada = cilindrada
 
@@ -35,7 +35,19 @@ class Motocicleta(nombre: String, marca: String, capacidadCombustible: Float, co
     }
 
     override fun realizaViaje(distancia: Float): Float {
-        return 2f
+        val distanciaMax = calcularAutonomia()  // lo asigno así no tiene que recalcular la función calcularAutonomia
+        if (distanciaMax > distancia){
+            kmActuales += distancia
+            combustibleActual -= (distancia / conversionCC()).redondear()
+            return 0f
+        }
+        else{
+
+            combustibleActual = 0f
+            kmActuales += calcularAutonomia()
+
+            return distancia - distanciaMax
+        }
     }
 
 
