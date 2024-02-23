@@ -1,20 +1,43 @@
 import javax.swing.text.Position
 
+
+
+val pierreNodoyuna = Automovil("Pierre Nodoyuna", "Seat", "Patán", 60f, 50f, 50f * 0.1f, true)
+val penelopeGlamour = Automovil("Penélope Glamour", "Volkswagen", "Passat 5", 70f, 45f, 50f * 0.1f, false)
+val peterPerfect = Automovil("Peter Perfect", "Citroen", "C7", 33f, 20f, 35f * 0.1f, false)
+val ghostRider = Motocicleta("Ghost Rider", "Yamaha", "Yakisoba", 44f, 13f, 33f * 0.1f, 225)
+val elNano = Automovil("Fernando Alonso, el Nano. Primero de su nombre. Arquitecto de la 33", "Aston Martin", "nanosexo", 33f, 33f, 33f * 0.1f, true)
+
+val participantes = listOf(pierreNodoyuna, penelopeGlamour, peterPerfect, ghostRider, elNano)
+
+
+
+
 class Carrera(nombreCarrera: String,
               distanciaTotal: Float,
               participantes: List<Vehiculo>,
-              estadoCarrera: Boolean,
+              var estadoCarrera: Boolean,
               historialAcciones: MutableMap<String, Int>){
 
 
     fun iniciarCarrera(){
+        estadoCarrera = true
 
+
+        determinarGanador() // puede que deba ir dentro del bucle
+
+        for (i in participantes){
+            avanzarVehiculo(i)
+
+
+        }
         /*TODO(): Inicia la carrera, estableciendo estadoCarrera a true y comenzando el ciclo de iteraciones donde los vehículos avanzan y realizan acciones.*/
 
     }
 
     fun avanzarVehiculo(vehiculo: Vehiculo){
 
+        
         /*TODO():  Identificado el vehículo, le hace avanzar una distancia aleatoria entre 10 y 200 km. Si el vehículo necesita repostar, se llama al método repostarVehiculo() antes de que pueda continuar. Este método llama a realizar filigranas.*/
 
     }
@@ -53,7 +76,7 @@ class Carrera(nombreCarrera: String,
 
     fun registrarAccion(){
 
-        /*TODO(): Añade una acción al historialAcciones del vehículo especificado.*/
+        /*TODO(): Añade una acción al historialAcciones del vehículo especificado.  */
 
     }
 
