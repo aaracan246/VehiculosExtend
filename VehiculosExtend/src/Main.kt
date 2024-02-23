@@ -6,5 +6,6 @@ fun main() {
     val ghostRider = Motocicleta("Ghost Rider", "Yamaha", "Yakisoba", 44f, 13f, 33f * 0.1f, 225)
     val elNano = Automovil("Fernando Alonso, el Nano. Primero de su nombre. Arquitecto de la 33", "Aston Martin", "nanosexo", 33f, 33f, 33f * 0.1f, true)
 
+
 }
 
