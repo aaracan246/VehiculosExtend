@@ -88,6 +88,9 @@ class Carrera(
      * @param cantidad Cantidad de combustible a repostar.
      */
     fun repostarVehiculo(vehiculo: Vehiculo, cantidad: Float) {
+        var conRespotaje = 0
+
+        conRespotaje++
         vehiculo.repostar(cantidad)
     }
 
@@ -130,7 +133,7 @@ class Carrera(
      * Obtiene los resultados finales de la carrera.
      */
     fun obtenerResultados() {
-        val participantesOrdenados = participantes.sortedBy { it.kmActuales }
+        val participantesOrdenados = participantes.sortedByDescending { it.kmActuales }
 
         println("Clasificación: ")
         println("______________")
@@ -141,6 +144,28 @@ class Carrera(
         println("5 -> ${participantesOrdenados[4].nombre}")
     }
 
+    fun actualizarResultados() {
+
+        // Ordenamos los participantes por la cantidad de kilómetros recorridos.
+        val participantesOrdenados = participantes.sortedByDescending { it.kmActuales }
+
+        // Lista para almacenar los resultados de la carrera.
+        val resultadosCarrera = mutableListOf<Resultados>()
+
+        // Genera los resultados para cada vehículo y los agrega a la lista de resultados.
+        for ((indice, vehiculo) in participantesOrdenados.withIndex()) {      // Esto he tenido que buscarlo que no lo tenía muy fresco.
+            val resultado = Resultados(
+                vehiculo = vehiculo,
+                kilometraje = vehiculo.kmActuales,
+                //paradasRepostaje = vehiculo.paradasRepostaje,
+                historialAcciones = historial.getOrDefault(vehiculo.nombre, emptyList())
+            )
+            resultadosCarrera.add(resultado)
+        }
+
+    }
+
+
     /**
      * Registra una acción realizada por un vehículo en su historial.
      * @param vehiculo Nombre del vehículo.
@@ -150,4 +175,11 @@ class Carrera(
         val accionesPorVehiculo = historial.get(vehiculo)
         accionesPorVehiculo?.add(accion)
     }
+
+    data class Resultados(val vehiculo: Vehiculo,
+                          val kilometraje: Float,
+                         // val paradasRepostaje: Int,
+                          val historialAcciones: List<String>){
+    }
+
 }
