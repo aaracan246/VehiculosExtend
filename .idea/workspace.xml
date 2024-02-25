@@ -4,11 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9665b2f-1dea-497d-9455-0842a28dfe9e" name="Changes" comment="Filigrana done">
+    <list default="true" id="a9665b2f-1dea-497d-9455-0842a28dfe9e" name="Changes" comment="entrega casi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Automovil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Automovil.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Carrera.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Carrera.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Motocicleta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Motocicleta.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Vehiculo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Vehiculo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Automovil$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Automovil$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Automovil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Automovil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$Resultados.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$determinarGanador$$inlined$sortedBy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$determinarGanador$$inlined$sortedBy$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$obtenerResultados$$inlined$sortedBy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$obtenerResultados$$inlined$sortedBy$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/MainKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Motocicleta$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Motocicleta$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Motocicleta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Motocicleta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Vehiculo$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Vehiculo$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Vehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Vehiculo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,13 +103,22 @@
       <option name="project" value="LOCAL" />
       <updated>1708856631834</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="entrega casi">
+      <option name="closed" value="true" />
+      <created>1708887343372</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708887343372</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="actualización casa" />
     <MESSAGE value="actualización casa2" />
     <MESSAGE value="Filigrana done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filigrana done" />
+    <MESSAGE value="entrega casi" />
+    <option name="LAST_COMMIT_MESSAGE" value="entrega casi" />
   </component>
 </project>

@@ -1,169 +1,153 @@
-import javax.swing.text.Position
+import kotlin.random.Random
 
-
-class Carrera(nombreCarrera: String,
-              distanciaTotal: Float,
-              participantes: List<Vehiculo>,
-              var estadoCarrera: Boolean){
-
+/**
+ * Representa una carrera entre varios participantes.
+ * @param nombreCarrera Nombre de la carrera.
+ * @param distanciaTotal Distancia total de la carrera en kilómetros.
+ * @param participantes Lista de vehículos participantes en la carrera.
+ * @param estadoCarrera Estado actual de la carrera (en curso o finalizada).
+ */
+class Carrera(
+    nombreCarrera: String,
+    distanciaTotal: Float,
+    participantes: List<Vehiculo>,
+    var estadoCarrera: Boolean
+) {
+    // Mapa que registra el historial de acciones realizadas por cada vehículo.
     var historial: MutableMap<String, MutableList<String>> = mutableMapOf()
+
+    // Distancia total de la carrera en kilómetros.
     val distanciaTotal = distanciaTotal
+
+    // Lista de vehículos participantes en la carrera.
     val participantes = participantes
 
-    companion object{
-
+    companion object {
+        // Longitud de cada tramo en kilómetros.
         const val TRAMO = 20f
     }
 
     init {
-
-        for (i in participantes){
+        // Inicializa el historial de acciones para cada participante.
+        for (i in participantes) {
             historial.put(i.nombre, mutableListOf())
-
         }
-
     }
 
-
-
-
-    fun iniciarCarrera(){
+    /**
+     * Inicia la carrera, estableciendo el estado de la carrera a "en curso".
+     * Comienza el ciclo de iteraciones donde los vehículos avanzan y realizan acciones.
+     */
+    fun iniciarCarrera() {
         estadoCarrera = true
+        val participantesRandom = participantes.shuffled().take(Random.nextInt(1, participantes.size + 1)) // Esto soluciona el que no fuera random.
+
 
         println("¡¡¡Está a punto de comenzar la carrera!!!")
         println("3...")
         println("2...")
         println("1...")
-
         println("¡YA!")
 
         do {
-            for (i in participantes){
-                avanzarVehiculo(i)
-
+            for (vehiculo in participantesRandom) {
+                avanzarVehiculo(vehiculo)
                 determinarGanador()
             }
-
-        }   while (estadoCarrera)
-
-
-
-        /*TODO(): Inicia la carrera, estableciendo estadoCarrera a true y comenzando el ciclo de iteraciones donde los vehículos avanzan y realizan acciones.*/
-
+        } while (estadoCarrera)
     }
 
-    fun avanzarVehiculo(vehiculo: Vehiculo){
-
+    /**
+     * Hace que un vehículo avance durante un tramo de la carrera.
+     * @param vehiculo Vehículo que avanza en la carrera.
+     */
+    fun avanzarVehiculo(vehiculo: Vehiculo) {
         val avance = (10..200).random().toFloat()
-        val tramosIguales = distanciaTotal / 20
-        /*val ultimoTramo = distanciaTotal - tramosIguales*/
 
-        if (vehiculo.kmActuales + avance < distanciaTotal && vehiculo.kmActuales + avance <= vehiculo.calcularAutonomia()){
-            vehiculo.kmActuales += avance
+        // Realiza una filigrana antes de avanzar.
+        realizarFiligrana(vehiculo)
 
+        // Verifica si el vehículo tiene suficiente combustible para avanzar.
+        val distanciaAvanzable = minOf(avance, vehiculo.calcularAutonomia())
+        if (vehiculo.combustibleActual >= distanciaAvanzable / Vehiculo.KM_POR_LITRO){
+            vehiculo.kmActuales += distanciaAvanzable
+
+            vehiculo.combustibleActual -= distanciaAvanzable / Vehiculo.KM_POR_LITRO
 
         }
         else{
-            repostarVehiculo(vehiculo, (15..25).random().toFloat())
-
+            // El vehículo no tiene suficiente combustible, así que lo repostamos.
+            val distanciaRestante = distanciaTotal - vehiculo.kmActuales
+            repostarVehiculo(vehiculo, distanciaRestante)
         }
-
-        repeat(tramosIguales.toInt()){
-            realizarFiligrana(vehiculo)
-        }
-
     }
 
-
-        /*TODO():  Identificado el vehículo, le hace avanzar una distancia aleatoria entre 10 y 200 km. Si el vehículo necesita repostar, se llama al método repostarVehiculo() antes de que pueda continuar. Este método llama a realizar filigranas.*/
-
-
-
-    fun repostarVehiculo(vehiculo: Vehiculo, cantidad: Float){
-
-
-        vehiculo.repostar(vehiculo.capacidadCombustible)
-
+    /**
+     * Realiza el repostaje de combustible para un vehículo.
+     * @param vehiculo Vehículo que realiza el repostaje.
+     * @param cantidad Cantidad de combustible a repostar.
+     */
+    fun repostarVehiculo(vehiculo: Vehiculo, cantidad: Float) {
+        vehiculo.repostar(cantidad)
     }
 
-    fun realizarFiligrana(vehiculo: Vehiculo){
-
-        if ((1..10).random() > 7){
-            if (vehiculo is Automovil){
+    /**
+     * Realiza una acción especial (filigrana) para un vehículo.
+     * @param vehiculo Vehículo que realiza la acción.
+     */
+    fun realizarFiligrana(vehiculo: Vehiculo) {
+        if ((1..10).random() > 7) {
+            if (vehiculo is Automovil) {
                 vehiculo.realizarDerrape()
-
                 registrarAccion(vehiculo.nombre, "¡¡¡${vehiculo.nombre} ha derrapado!!!")
-
-            }
-            else if (vehiculo is Motocicleta){
+            } else if (vehiculo is Motocicleta) {
                 vehiculo.realizaCaballito()
-
                 registrarAccion(vehiculo.nombre, "¡¡¡${vehiculo.nombre} ha hecho un caballito!!!")
-
             }
-        }
-        else{
+        } else {
             registrarAccion(vehiculo.nombre, "${vehiculo.nombre} no hace nada especial.")
         }
-
-        /*TODO(): registra la acción.*/
-
-
     }
 
+    /**
+     * Determina si algún vehículo ha ganado la carrera.
+     */
+    fun determinarGanador() {
+        // Ordena los participantes por la cantidad de kilómetros recorridos.
+        val participantesOrdenados = participantes.sortedBy { it.kmActuales }
 
-    fun determinarGanador(){
-
-
-        participantes.sortedBy { it.kmActuales }
-
-        for (i in participantes){
-            if (i.kmActuales >= distanciaTotal){
-
-                println("¡¡${i.nombre} HA GANADO LA CARRERA!!")
+        // Verifica si algún vehículo ha superado la distancia total y declara un ganador.
+        for (i in participantesOrdenados) {
+            if (i.kmActuales >= distanciaTotal) {
                 estadoCarrera = false
-
+                println("¡¡${i.nombre} HA GANADO LA CARRERA!!")
             }
         }
-
-
-        /*TODO(): Revisa posiciones para identificar al vehículo (o vehículos) que haya alcanzado o superado la distanciaTotal, estableciendo el estado de la carrera a finalizado y determinando el ganador.*/
-
+        return
     }
 
-    fun obtenerResultados(){
-
-        participantes.sortedBy { it.kmActuales }
+    /**
+     * Obtiene los resultados finales de la carrera.
+     */
+    fun obtenerResultados() {
+        val participantesOrdenados = participantes.sortedBy { it.kmActuales }
 
         println("Clasificación: ")
         println("______________")
-        println("1 -> ${participantes[0].nombre}")
-        println("2 -> ${participantes[1].nombre}")
-        println("3 -> ${participantes[2].nombre}")
-        println("4 -> ${participantes[3].nombre}")
-        println("5 -> ${participantes[4].nombre}")
-
-
-        /*TODO(): Devuelve una clasificación final de los vehículos, cada elemento tendrá el nombre del vehiculo, posición ocupada, la distancia total recorrida, el número de paradas para repostar y el historial de acciones. La collección estará ordenada por la posición ocupada.*/
-
-
+        println("1 -> ${participantesOrdenados[0].nombre}")
+        println("2 -> ${participantesOrdenados[1].nombre}")
+        println("3 -> ${participantesOrdenados[2].nombre}")
+        println("4 -> ${participantesOrdenados[3].nombre}")
+        println("5 -> ${participantesOrdenados[4].nombre}")
     }
 
-    private fun registrarAccion(vehiculo: String, accion: String){
-
+    /**
+     * Registra una acción realizada por un vehículo en su historial.
+     * @param vehiculo Nombre del vehículo.
+     * @param accion Acción realizada por el vehículo.
+     */
+    private fun registrarAccion(vehiculo: String, accion: String) {
         val accionesPorVehiculo = historial.get(vehiculo)
         accionesPorVehiculo?.add(accion)
-
-
-
-
-        /*TODO(): Añade una acción al historialAcciones del vehículo especificado.*/
-
-    }
-
-    data class Resultados(val vehiculo: Vehiculo,
-                          val kilometraje: Float,
-                          val paradasRepostaje: Int,
-                          val historialAcciones: List<String>){
     }
 }
