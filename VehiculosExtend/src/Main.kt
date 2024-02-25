@@ -1,3 +1,7 @@
+
+
+// Si ves código raro en lo que rodea a las dos filigranas es porque lo he tenido que buscar. Me he tirado toda la tarde buscando el motivo del bucle infinito y no he podido avanzar mucho por ello.
+
 fun main() {
 
     val pierreNodoyuna = Automovil("Pierre Nodoyuna", "Seat", "Patán", 60f, 50f * 0.1f, 50f , true)
