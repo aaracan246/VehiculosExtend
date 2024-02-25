@@ -21,6 +21,9 @@ class Carrera(nombreCarrera: String,
               historialAcciones: MutableMap<String, Int>){
 
 
+
+    val historial: MutableMap<String, Int> = historialAcciones
+
     fun iniciarCarrera(){
         estadoCarrera = true
 
