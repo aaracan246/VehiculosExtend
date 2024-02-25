@@ -26,7 +26,7 @@ class Automovil(nombre: String, marca: String, modelo: String, capacidadCombusti
 
     fun realizarDerrape(): Float {
 
-        println("¡¡¡this.nombre(NOT YET IMPLEMENTED) ha derrapado!!!")
+        println("¡¡¡${this.nombre} ha derrapado!!!")
         combustibleActual -= if (esHibrido){   // <-- lo había hecho con if y me lo ha puesto así que está xulo
             CONSUMO_DERRAPE_HIBRIDO
         } else{
