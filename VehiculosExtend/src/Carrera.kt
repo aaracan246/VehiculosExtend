@@ -2,11 +2,12 @@ import javax.swing.text.Position
 
 
 
-val pierreNodoyuna = Automovil("Pierre Nodoyuna", "Seat", "Patán", 60f, 50f, 50f * 0.1f, true)
-val penelopeGlamour = Automovil("Penélope Glamour", "Volkswagen", "Passat 5", 70f, 45f, 50f * 0.1f, false)
-val peterPerfect = Automovil("Peter Perfect", "Citroen", "C7", 33f, 20f, 35f * 0.1f, false)
-val ghostRider = Motocicleta("Ghost Rider", "Yamaha", "Yakisoba", 44f, 13f, 33f * 0.1f, 225)
-val elNano = Automovil("Fernando Alonso, el Nano. Primero de su nombre. Arquitecto de la 33", "Aston Martin", "nanosexo", 33f, 33f, 33f * 0.1f, true)
+val pierreNodoyuna = Automovil("Pierre Nodoyuna", "Seat", "Patán", 60f, 50f * 0.1f, 50f , true)
+val penelopeGlamour = Automovil("Penélope Glamour", "Volkswagen", "Passat 5", 70f * 0.1f, 45f, 50f * 0.1f, false)
+val peterPerfect = Automovil("Peter Perfect", "Citroen", "C7", 33f, 20f * 0.1f, 35f, false)
+val ghostRider = Motocicleta("Ghost Rider", "Yamaha", "Yakisoba", 44f, 13f * 0.1f, 35f, 225)
+val elNano = Automovil("Fernando Alonso, el Nano. Primero de su nombre. Arquitecto de la 33", "Aston Martin", "nanosexo", 33f, 33f  * 0.1f, 33f, true)
+
 
 val participantes = listOf(pierreNodoyuna, penelopeGlamour, peterPerfect, ghostRider, elNano)
 
@@ -24,13 +25,8 @@ class Carrera(nombreCarrera: String,
         estadoCarrera = true
 
 
-        determinarGanador() // puede que deba ir dentro del bucle
+        determinarGanador()
 
-        for (i in participantes){
-            avanzarVehiculo(i)
-
-
-        }
         /*TODO(): Inicia la carrera, estableciendo estadoCarrera a true y comenzando el ciclo de iteraciones donde los vehículos avanzan y realizan acciones.*/
 
     }
@@ -50,7 +46,20 @@ class Carrera(nombreCarrera: String,
 
     fun realizarFiligrana(vehiculo: Vehiculo){
 
-        /*TODO(): Determina aleatoriamente si un vehículo realiza una filigrana (derrape o caballito) y registra la acción.*/
+        if ((1..10).random() > 7){
+            if (vehiculo is Automovil){
+                vehiculo.realizarDerrape()
+
+                println("¡¡¡$vehiculo ha derrapado!!!")
+            }
+            else if (vehiculo is Motocicleta){
+                vehiculo.realizaCaballito()
+
+                println("¡¡¡$vehiculo ha hecho un caballito!!!")
+            }
+        }
+
+        /*TODO(): registra la acción.*/
 
 
     }
