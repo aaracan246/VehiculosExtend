@@ -21,6 +21,9 @@ abstract class Vehiculo(
     // Marca del vehículo.
     val marca = marca
 
+    // Modelo del vehículo.
+    val modelo = modelo
+
     // Capacidad total del depósito de combustible en litros.
     val capacidadCombustible = capacidadCombustible
 
@@ -67,7 +70,7 @@ abstract class Vehiculo(
      */
     open fun calcularAutonomia(): Float {
         val autonomia = combustibleActual * KM_POR_LITRO
-        return autonomia.redondear()
+        return autonomia.redondear(2)
     }
 
     /**
@@ -79,7 +82,7 @@ abstract class Vehiculo(
         val distanciaMax = calcularAutonomia()
         return if (distanciaMax > distancia) {
             kmActuales += distancia
-            combustibleActual -= (distancia / KM_POR_LITRO).redondear()
+            combustibleActual -= (distancia / KM_POR_LITRO).redondear(2)
             1f
         } else {
             combustibleActual = 0f
@@ -107,7 +110,5 @@ abstract class Vehiculo(
      * Redondea un número decimal a dos decimales.
      * @return El número redondeado.
      */
-    fun Float.redondear(): Float {
-        return (this * 100).toInt().toFloat() / 100
-    }
+
 }

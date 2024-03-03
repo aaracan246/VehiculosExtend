@@ -1,6 +1,12 @@
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
 
 // Si ves código raro en lo que rodea a las dos filigranas es porque lo he tenido que buscar. Me he tirado toda la tarde buscando el motivo del bucle infinito y no he podido avanzar mucho por ello.
+fun Float.redondear(posiciones: Int): Float {
+    val factor = 10.0.pow(posiciones.toDouble()).toFloat()
+    return (this * factor).roundToInt() / factor
+}
 
 fun main() {
 

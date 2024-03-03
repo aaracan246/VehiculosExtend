@@ -8,7 +8,7 @@
  * @param kmActuales Kilómetros recorridos por la motocicleta desde el inicio de la carrera.
  * @param cilindrada Cilindrada de la motocicleta en centímetros cúbicos (cc).
  */
-class Motocicleta(
+open class Motocicleta(
     nombre: String,
     marca: String,
     modelo: String,
@@ -73,7 +73,7 @@ class Motocicleta(
         val distanciaMax = calcularAutonomia()
         return if (distanciaMax > distancia) {
             kmActuales += distancia
-            combustibleActual -= (distancia / conversionCC()).redondear()
+            combustibleActual -= (distancia / conversionCC()).redondear(2)
             1f
         } else {
             combustibleActual = 0f

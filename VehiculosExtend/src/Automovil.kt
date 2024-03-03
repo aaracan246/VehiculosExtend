@@ -8,7 +8,7 @@
  * @param kmActuales Kilómetros recorridos por el automóvil desde el inicio de la carrera.
  * @param esHibrido Indica si el automóvil es híbrido o no.
  */
-class Automovil(
+open class Automovil(
     nombre: String,
     marca: String,
     modelo: String,
@@ -72,7 +72,7 @@ class Automovil(
             super.calcularAutonomia()
         } else {
             val autonomiaElectrico = combustibleActual * AHORRO_ELECTRICO
-            autonomiaElectrico.redondear()
+            autonomiaElectrico.redondear(2)
         }
     }
 }

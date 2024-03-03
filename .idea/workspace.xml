@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9665b2f-1dea-497d-9455-0842a28dfe9e" name="Changes" comment="Solucionando errores2">
+    <list default="true" id="a9665b2f-1dea-497d-9455-0842a28dfe9e" name="Changes" comment="Casi entrega final">
+      <change afterPath="$PROJECT_DIR$/VehiculosExtend/src/Camion.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VehiculosExtend/src/Quad.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Carrera.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Carrera.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$determinarGanador$$inlined$sortedBy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$determinarGanador$$inlined$sortedBy$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$obtenerResultados$$inlined$sortedBy$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera$obtenerResultados$$inlined$sortedBy$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/Carrera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VehiculosExtend/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VehiculosExtend/MainKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Automovil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Automovil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Motocicleta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Motocicleta.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VehiculosExtend/src/Vehiculo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VehiculosExtend/src/Vehiculo.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +45,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/usuariot/ReposGit/Armasdefuego",
+    "last_opened_file_path": "D:/Repositorio/VehiculosExtend",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -115,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708899399785</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Casi entrega final">
+      <option name="closed" value="true" />
+      <created>1708900834175</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708900834175</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +134,7 @@
     <MESSAGE value="entrega casi" />
     <MESSAGE value="Solucionando errores" />
     <MESSAGE value="Solucionando errores2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solucionando errores2" />
+    <MESSAGE value="Casi entrega final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Casi entrega final" />
   </component>
 </project>
